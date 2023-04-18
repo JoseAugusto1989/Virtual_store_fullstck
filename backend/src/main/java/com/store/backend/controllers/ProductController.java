@@ -1,7 +1,7 @@
 package com.store.backend.controllers;
 
-import com.store.backend.entities.City;
-import com.store.backend.services.CityService;
+import com.store.backend.entities.Product;
+import com.store.backend.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,26 +9,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/city")
+@RequestMapping("/api/product")
 @CrossOrigin
-public class CityController {
+public class ProductController {
 
     @Autowired
-    private CityService service;
+    private ProductService service;
 
     @GetMapping("/")
-    public List<City> findAll() {
+    public List<Product> findAll() {
         return service.findAll();
     }
 
     @PostMapping("/")
-    public City add(@RequestBody City city) {
-        return service.add(city);
+    public Product save(@RequestBody Product obj) {
+        return service.save(obj);
     }
 
     @PutMapping("/")
-    public City update(@RequestBody City city) {
-        return service.update(city);
+    public Product update(@RequestBody Product obj) {
+        return service.update(obj);
     }
 
     @DeleteMapping("/{id}")

@@ -1,7 +1,7 @@
 package com.store.backend.controllers;
 
-import com.store.backend.entities.State;
-import com.store.backend.services.StateService;
+import com.store.backend.entities.Brand;
+import com.store.backend.services.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,32 +9,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/state")
+@RequestMapping("/api/brand")
 @CrossOrigin
-public class StateController {
+public class BrandController {
 
     @Autowired
-    private StateService service;
+    private BrandService service;
 
     @PostMapping("/")
-    public State add(@RequestBody State state) {
-        return service.save(state);
-    }
-
-    @PutMapping("/")
-    public State update(@RequestBody State state) {
-        return service.update(state);
+    public Brand save(@RequestBody Brand obj) {
+        return service.save(obj);
     }
 
     @GetMapping("/")
-    public List<State> getAll() {
+    public List<Brand> findAll() {
         return service.findAll();
+    }
+
+    @PutMapping("/")
+    public Brand update(@RequestBody Brand obj) {
+        return service.update(obj);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         service.delete(id);
-        return ResponseEntity.ok().build();
+        return  ResponseEntity.ok().build();
     }
 
 }

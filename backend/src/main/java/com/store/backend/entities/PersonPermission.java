@@ -7,26 +7,27 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "IMAGENS")
-public class Images {
+@Table(name = "PERMISSAO_PESSOA")
+public class PersonPermission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "IMAGENS_ID", nullable = false)
     private Long id;
 
-    @Column(name = "NOME")
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "ID_PESSOA")
+    private Person person;
 
     @ManyToOne
-    @JoinColumn(name = "PRODUTO_ID")
-    private Product product;
+    @JoinColumn(name = "ID_PERMISSAO")
+    private Permission permission;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_INICIAL")
     private Date initialDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "DATA_ATUALIZACAO")
+    @Column(name = "DATA_ATUALIZAÇÃO")
     private Date atualizationDate;
+
 }

@@ -1,7 +1,7 @@
 package com.store.backend.controllers;
 
-import com.store.backend.entities.City;
-import com.store.backend.services.CityService;
+import com.store.backend.entities.Person;
+import com.store.backend.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,26 +9,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/city")
+@RequestMapping("/api/person")
 @CrossOrigin
-public class CityController {
+public class PersonController {
 
     @Autowired
-    private CityService service;
+    private PersonService service;
 
     @GetMapping("/")
-    public List<City> findAll() {
+    public List<Person> findAll() {
         return service.findAll();
     }
 
     @PostMapping("/")
-    public City add(@RequestBody City city) {
-        return service.add(city);
+    public Person save(@RequestBody Person obj) {
+        return service.save(obj);
     }
 
     @PutMapping("/")
-    public City update(@RequestBody City city) {
-        return service.update(city);
+    public Person update(@RequestBody Person obj) {
+        return service.update(obj);
     }
 
     @DeleteMapping("/{id}")

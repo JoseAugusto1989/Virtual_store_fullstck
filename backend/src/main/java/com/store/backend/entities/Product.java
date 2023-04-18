@@ -12,6 +12,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_PRODUTO")
     private Long id;
 
     @Column(name = "DESCRIÇÃO_CURTA")
