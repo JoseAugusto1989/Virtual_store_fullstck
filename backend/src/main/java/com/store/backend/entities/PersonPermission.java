@@ -1,5 +1,6 @@
 package com.store.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class PersonPermission {
 
     @ManyToOne
     @JoinColumn(name = "ID_PESSOA")
+    @JsonIgnore
     private Person person;
 
     @ManyToOne

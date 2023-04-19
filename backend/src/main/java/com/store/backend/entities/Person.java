@@ -1,9 +1,12 @@
 package com.store.backend.entities;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -36,6 +39,10 @@ public class Person {
     @JoinColumn(name = "ID_CIDADE")
     private City city;
 
+    @OneToMany(mappedBy = "person", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @Setter(value = AccessLevel.NONE)
+    private List<PersonPermission> personPermissionsList;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_INICIAL")
     private Date initialDate;
@@ -44,4 +51,10 @@ public class Person {
     @Column(name = "DATA_ATUALIZAÇÃO")
     private Date atualizationDate;
 
+    public void setPersonPermissionList(List<PersonPermission> permissions) {
+        for (PersonPermission p: permissions) {
+            p.setPerson(this);
+        }
+        this.personPermissionsList = permissions;
+    }
 }
