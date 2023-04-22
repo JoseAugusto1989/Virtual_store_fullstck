@@ -2,7 +2,6 @@ package com.store.backend.services;
 
 import com.store.backend.dtos.PersonClientRequestDto;
 import com.store.backend.entities.Person;
-import com.store.backend.repositories.PermissionRepository;
 import com.store.backend.repositories.PersonClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -26,6 +26,13 @@ public class Person {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "CODIGO")
+    private String RecuperationCodePassword;
+
+    @Column(name = "DATA_ENVIO_CODIGO")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date sendDateCode;
+
     @Column(name = "SENHA")
     private String password;
 
